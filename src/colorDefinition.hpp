@@ -2,6 +2,11 @@
 #define COLORDEFINITION_HPP
 
 #define ORANGE_START "\033[38;5;214m"
-#define ORANGE_END "\033[0m"
+
+#define BLUE_START "\033[34m"
+
+#define PURPLE_START "\033[35m"
+
+#define GREEN_START "\033[32m"
 
 #endif //COLORDEFINITION_HPP
