@@ -3,6 +3,8 @@
 #include <unistd.h>
 
 #include "Equipment.hpp"
+#include "Sword.hpp"
+#include "Bow.hpp"
 
 void setInputModeRaw(bool enable) {
     static struct termios oldt, newt;
@@ -51,11 +53,13 @@ void displayMenu(Equipment** items, int numItems, int selectedIndex) {
 void makeInventory(Equipment* inventory[5]) {
 	for (int i = 0; i < 5; ++i) {
 		if (i % 2 == 0) {
-			inventory[i] = new Equipment("sword", "That's a cool sword", EquipmentType::sword);
+			Equipment* e = new Sword("s", "Sword");
+			inventory[i] = e;	
 		} else {
-			inventory[i] = new Equipment("shield", "That's a cool shield", EquipmentType::shield);
+			Equipment* e = new Bow("b", "Bow");
+			inventory[i] = e;
 		}
-	}
+	}	
 }
 
 int main(int argc, char** argv) {
