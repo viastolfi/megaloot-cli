@@ -46,7 +46,7 @@ char readArrowKey() {
 void makeInventory(Equipment* inventory[5]) {
 	for (int i = 0; i < 5; ++i) {
 		if (i % 2 == 0) {
-			Equipment* e = new Sword("s", "Sword");
+			Equipment* e = new Sword("s", "Sword", {Stat(StatName::power, 13)});
 			inventory[i] = e;	
 		} else {
 			Equipment* e = new Bow("b", "Bow");
@@ -70,9 +70,6 @@ int main(int argc, char** argv) {
 
     char input;
 
-		Stat t(StatName::power, 12);
-		std::cout << t << std::endl;
-		/*
     while (true) {
 				functions[actualMenu](inventory, numItems, selectedIndex);
         input = readArrowKey();
@@ -101,6 +98,5 @@ int main(int argc, char** argv) {
     }
 
     setInputModeRaw(false);
-		*/
     return 0;
 }

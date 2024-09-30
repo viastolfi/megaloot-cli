@@ -25,6 +25,10 @@ void menuGetEquipmentInfo(Equipment** items, int numItems, int selectedIndex) {
 	std::cout << *e << "\n";
 	std::cout << "Description : " << e->getDescription() << "\n";
 	std::cout << "Rariry : " << e->getRarity() << "\n";
+	std::cout << "Stats : " << "\n";
+	for (auto s : e->getStats()) {
+		std::cout << s.getStatName() << " : " << s.getStatValue() << "\n";
+	}
 	std::cout << "==================================" << "\n";
 }
 
