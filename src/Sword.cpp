@@ -9,5 +9,5 @@ int Sword::attack() {
 }
 
 void Sword::print(std::ostream& os) {
-	os << getRarity().getColorStringStart() << "Type : 🗡️  SWORD" << ", Name : " << getName() << ", Rarity :" << getRarity()  << getRarity().getColorStringEnd();
+	os << getRarity().getColorStringStart() << "Type : 🗡️  SWORD" << ", Name : " << getName() << getRarity().getColorStringEnd();
 }

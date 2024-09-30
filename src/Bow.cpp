@@ -9,5 +9,5 @@ int Bow::attack() {
 }
 
 void Bow::print(std::ostream& os) {
-	os << getRarity().getColorStringStart() << "Type : 🏹	 BOW" << ", Name : " << getName() << ", Rarity :" << getRarity()  << getRarity().getColorStringEnd();
+	os << getRarity().getColorStringStart() << "Type : 🏹  BOW" << ", Name : " << getName() << ", Rarity :" << getRarity()  << getRarity().getColorStringEnd();
 }
