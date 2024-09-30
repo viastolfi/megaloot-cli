@@ -5,26 +5,29 @@
 #include <string>
 
 #include "Equipment.hpp"
+#include "Player.hpp"
 
-void displayMenu(Equipment** items, int numItems, int selectedIndex) {
+void displayMenu(Player* p, int selectedIndex) {
     system("clear");
-    for (int i = 0; i < numItems; ++i) {
-        if (i == selectedIndex) {
-            std::cout << "-> " << *items[i] << std::endl;
-        } else {
-            std::cout << "   " << *items[i] << std::endl;
-        }
-    }
+
+		for(auto e : p->getEquipment()) {
+			if (p->getEquipment().at(selectedIndex) == e) {
+      	std::cout << "-> " << *e  << std::endl;
+			}	else {
+      	std::cout << "   " << *e  << std::endl;
+			}
+		}
 }
 
-void menuGetEquipmentInfo(Equipment** items, int numItems, int selectedIndex) {
+void menuGetEquipmentInfo(Player* p, int selectedIndex) {
 	system("clear");
-	Equipment* e = items[selectedIndex];
+	Equipment* e = p->getEquipment().at(selectedIndex);
 
 	std::cout << "==================================\n"; 	
 	std::cout << *e << "\n";
 	std::cout << "Description : " << e->getDescription() << "\n";
 	std::cout << "Rariry : " << e->getRarity() << "\n";
+   
 	std::cout << "Stats : " << "\n";
 	for (auto s : e->getStats()) {
 		std::cout << s.getStatName() << " : " << s.getStatValue() << "\n";

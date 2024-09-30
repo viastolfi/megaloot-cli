@@ -4,6 +4,7 @@
 #include <iostream>
 
 enum StatName {
+	hp,
 	power,
 };
 

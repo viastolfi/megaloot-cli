@@ -9,8 +9,10 @@
 #include "Equipment.hpp"
 #include "Sword.hpp"
 #include "Bow.hpp"
+#include "Stub.hpp"
+#include "Player.hpp"
 
-typedef void (*menuFunction) (Equipment** items, int numItems, int selectedIndex);
+typedef void (*menuFunction) (Player* p, int selectedIndex);
 
 void setInputModeRaw(bool enable) {
     static struct termios oldt, newt;
@@ -43,24 +45,10 @@ char readArrowKey() {
     return '\0';
 }
 
-void makeInventory(Equipment* inventory[5]) {
-	for (int i = 0; i < 5; ++i) {
-		if (i % 2 == 0) {
-			Equipment* e = new Sword("s", "Sword", {Stat(StatName::power, 13)});
-			inventory[i] = e;	
-		} else {
-			Equipment* e = new Bow("b", "Bow");
-			inventory[i] = e;
-		}
-	}	
-}
-
 int main(int argc, char** argv) {
 		srand(static_cast<unsigned int>(time(0)));
-
-		const int numItems = 5;
-    Equipment* inventory[numItems];
-		makeInventory(inventory);
+		
+		Player* player = Stub::createBase();
     int selectedIndex = 0;
 		
 		int actualMenu = 0;
@@ -71,22 +59,19 @@ int main(int argc, char** argv) {
     char input;
 
     while (true) {
-				functions[actualMenu](inventory, numItems, selectedIndex);
+				functions[actualMenu](player, selectedIndex);
         input = readArrowKey();
 
         if (input == 'u' && selectedIndex > 0) {
             --selectedIndex; 
         } 
-				else if (input == 'd' && selectedIndex < numItems - 1) {
+				else if (input == 'd' && selectedIndex < player->getEquipment().size() - 1) {
             ++selectedIndex;
 
         } 
 				else if (input == ' ') {
 					functions.push_back(menuGetEquipmentInfo);
 					actualMenu++;
-				}
-				else if (input == 'r') {
-					makeInventory(inventory);
 				}
 				else if (input == 'q') {
 						actualMenu--;

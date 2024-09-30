@@ -1,5 +1,9 @@
 #include "Bow.hpp"
 
+Bow::Bow(std::string name, std::string description, std::list<Stat> stats)
+				:Weapon(name, description, stats)
+{}
+
 Bow::Bow(std::string name, std::string description)
 				:Weapon(name, description)
 {}
