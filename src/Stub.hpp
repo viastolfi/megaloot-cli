@@ -8,6 +8,8 @@
 #include "Equipment.hpp"
 #include "Sword.hpp"
 #include "Bow.hpp"
+#include "Ennemy.hpp"
+#include "Zombie.hpp"
 
 class Stub {
 public:
@@ -34,6 +36,11 @@ public:
 	
 		Player* p = new Player(inv, {Stat(StatName::hp, 50)});	
 		return p;
+	}
+
+	inline static Ennemy* createEnnemy() {
+		Ennemy* e = new Zombie({Stat(StatName::power, 10), Stat(StatName::hp, 50)});
+		return e;
 	}
 };
 

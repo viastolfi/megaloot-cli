@@ -11,6 +11,7 @@
 #include "Bow.hpp"
 #include "Stub.hpp"
 #include "Player.hpp"
+#include "Ennemy.hpp"
 
 typedef void (*menuFunction) (Player* p, int selectedIndex);
 
@@ -47,15 +48,17 @@ char readArrowKey() {
 
 int main(int argc, char** argv) {
 		srand(static_cast<unsigned int>(time(0)));
+
+		Ennemy* e = Stub::createEnnemy();
+		std::cout << *e << std::endl;
+		std::cout << e->attack() << std::endl;	
 		
 		Player* player = Stub::createBase();
     int selectedIndex = 0;
-		
 		int actualMenu = 0;
 		std::vector<menuFunction> functions = { displayMenu, };
 
     setInputModeRaw(true);
-
     char input;
 
     while (true) {
