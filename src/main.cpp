@@ -3,6 +3,8 @@
 #include <unistd.h>
 #include <vector>
 
+#include "Stat.hpp"
+#include "StatName.hpp"
 #include "menu.hpp"
 #include "Equipment.hpp"
 #include "Sword.hpp"
@@ -67,6 +69,10 @@ int main(int argc, char** argv) {
     setInputModeRaw(true);
 
     char input;
+
+		Stat t(StatName::power, 12);
+		std::cout << t << std::endl;
+		/*
     while (true) {
 				functions[actualMenu](inventory, numItems, selectedIndex);
         input = readArrowKey();
@@ -95,6 +101,6 @@ int main(int argc, char** argv) {
     }
 
     setInputModeRaw(false);
-
+		*/
     return 0;
 }
