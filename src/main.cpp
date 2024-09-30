@@ -1,10 +1,14 @@
 #include <iostream>
 #include <termios.h>
 #include <unistd.h>
+#include <vector>
 
+#include "menu.hpp"
 #include "Equipment.hpp"
 #include "Sword.hpp"
 #include "Bow.hpp"
+
+typedef void (*menuFunction) (Equipment** items, int numItems, int selectedIndex);
 
 void setInputModeRaw(bool enable) {
     static struct termios oldt, newt;
@@ -28,8 +32,6 @@ char readArrowKey() {
                     switch (seq[1]) {
                         case 'A': return 'u';
                         case 'B': return 'd';
-                        case 'C': return 'r';
-                        case 'D': return 'l';
                     }
                 }
             }
@@ -37,17 +39,6 @@ char readArrowKey() {
 				else return c;
     }
     return '\0';
-}
-
-void displayMenu(Equipment** items, int numItems, int selectedIndex) {
-    system("clear");
-    for (int i = 0; i < numItems; ++i) {
-        if (i == selectedIndex) {
-            std::cout << "-> " << *items[i] << std::endl;
-        } else {
-            std::cout << "   " << *items[i] << std::endl;
-        }
-    }
 }
 
 void makeInventory(Equipment* inventory[5]) {
@@ -64,17 +55,20 @@ void makeInventory(Equipment* inventory[5]) {
 
 int main(int argc, char** argv) {
 		srand(static_cast<unsigned int>(time(0)));
+
 		const int numItems = 5;
     Equipment* inventory[numItems];
 		makeInventory(inventory);
     int selectedIndex = 0;
+		
+		int actualMenu = 0;
+		std::vector<menuFunction> functions = { displayMenu, };
 
     setInputModeRaw(true);
 
     char input;
     while (true) {
-        displayMenu(inventory, numItems, selectedIndex); 
-
+				functions[actualMenu](inventory, numItems, selectedIndex);
         input = readArrowKey();
 
         if (input == 'u' && selectedIndex > 0) {
@@ -84,12 +78,20 @@ int main(int argc, char** argv) {
             ++selectedIndex;
 
         } 
+				else if (input == ' ') {
+					functions.push_back(menuGetEquipmentInfo);
+					actualMenu++;
+				}
 				else if (input == 'r') {
 					makeInventory(inventory);
 				}
 				else if (input == 'q') {
-            break; 
-        }
+						actualMenu--;
+						if(actualMenu == -1) break;
+						else functions.pop_back();
+        } else {
+					std::cout << input << std::endl;
+				}
     }
 
     setInputModeRaw(false);
