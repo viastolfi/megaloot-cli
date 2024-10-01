@@ -1,7 +1,7 @@
 #include "Player.hpp"
 
 Player::Player(std::vector<Equipment*> inventory, std::list<Stat> stats)
-				:inventory{inventory}, stats{stats}
+				:stats{stats}, inventory{inventory}
 {}
 
 void Player::addStat(Stat stat) {

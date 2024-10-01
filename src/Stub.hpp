@@ -10,6 +10,7 @@
 #include "Bow.hpp"
 #include "Ennemy.hpp"
 #include "Zombie.hpp"
+#include "Stage.hpp"
 
 class Stub {
 public:
@@ -42,6 +43,21 @@ public:
 		Ennemy* e = new Zombie({Stat(StatName::power, 10), Stat(StatName::hp, 50)});
 		return e;
 	}
+
+  inline static Stage createStage() {
+    std::list<Ennemy*> frontLine;
+    std::list<Ennemy*> backLine;
+    for (int i = 0; i < 3; i++){
+      Ennemy* e = Stub::createEnnemy(); 
+      Ennemy* e1 = Stub::createEnnemy(); 
+
+      frontLine.push_back(e);
+      backLine.push_back(e1);
+    }
+
+    Stage s(frontLine, backLine);
+    return s;
+  }
 };
 
 #endif //STUB_HPP

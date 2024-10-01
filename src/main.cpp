@@ -52,11 +52,20 @@ int main(int argc, char** argv) {
 		if (argc > 1) {
 			if (std::string(argv[1]).compare("dev") == 0) {
 				Ennemy* e = Stub::createEnnemy();
+        std::cout << "=========ENNEMY==========\n";
 				std::cout << *e << std::endl;
-				std::cout << "Zombie attack : " << e->attack() << std::endl;	
+				std::cout << "Zombie attack : " << e->attack();	
 		
 				Player* player = Stub::createBase();	
+        std::cout << "=========PLAYER==========\n";
 				std::cout << *player << std::endl;	
+				for (auto e : player->getEquipment()) {
+					std::cout << *e << std::endl;
+				} 
+
+        Stage s = Stub::createStage();
+        std::cout << "============STAGE=============\n";
+        std::cout << s << std::endl;
 			}
 		} else {
 			std::cout << "Not implemented yet" << std::endl;

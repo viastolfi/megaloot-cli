@@ -10,7 +10,6 @@ make
 clear
 if [ ! -z $1 ];then
 	if [ $1 == "dev" ];then
-		echo "test"
 		./bin/exe dev
 	fi	
 else 
