@@ -1,5 +1,9 @@
 #include "Stage.hpp"
 
+Stage::Stage()
+  :backLine{}, frontLine{}
+{}
+
 Stage::Stage(std::list<Ennemy*> frontLine, std::list<Ennemy*> backLine)
   :backLine{backLine}, frontLine{frontLine}
  {}
@@ -19,8 +23,12 @@ std::list<Ennemy*> Stage::getEnnemies() {
 }
 
 std::ostream& operator<<(std::ostream& os, Stage s) {
-  os << "Ennemies : ";
-  for (auto e : s.getEnnemies()) {
+  os << "Front Line : ";
+  for (auto e : s.getFrontLine()) {
+    os << "\n" << *e;
+  }
+  os << "\nBack Line : ";
+  for (auto e : s.getBackLine()) {
     os << "\n" << *e;
   }
   return os;

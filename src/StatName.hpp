@@ -13,6 +13,9 @@ inline std::ostream& operator<<(std::ostream& os, StatName sn) {
 	case power: 
 		os << "power";
 		break;
+  case hp:
+    os << "hp";
+    break;
 	default:
 		os << "Not Implemented";
 		break;

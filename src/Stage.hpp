@@ -11,6 +11,7 @@ private:
   std::list<Ennemy*> backLine;
   std::list<Ennemy*> frontLine;
 public:
+  Stage();
   Stage(std::list<Ennemy*> frontLine, std::list<Ennemy*> backLine);
   std::list<Ennemy*> getBackLine();
   std::list<Ennemy*> getFrontLine();

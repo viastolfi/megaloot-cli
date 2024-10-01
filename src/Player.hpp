@@ -13,6 +13,8 @@ private:
 	std::list<Stat> stats;
 	std::vector<Equipment*> inventory;
 public:
+  Player();
+  Player(std::list<Stat> stats);
 	Player(std::vector<Equipment*> inventory, std::list<Stat> stats);
 	void addStat(Stat stat);
 	void addEquipment(Equipment* e);

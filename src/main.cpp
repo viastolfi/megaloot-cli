@@ -12,6 +12,7 @@
 #include "Stub.hpp"
 #include "Player.hpp"
 #include "Ennemy.hpp"
+#include "Game.hpp"
 
 typedef void (*menuFunction) (Player* p, int selectedIndex);
 
@@ -50,23 +51,17 @@ int main(int argc, char** argv) {
 		srand(static_cast<unsigned int>(time(0)));
 
 		if (argc > 1) {
-			if (std::string(argv[1]).compare("dev") == 0) {
-				Ennemy* e = Stub::createEnnemy();
-        std::cout << "=========ENNEMY==========\n";
-				std::cout << *e << std::endl;
-				std::cout << "Zombie attack : " << e->attack();	
-		
-				Player* player = Stub::createBase();	
-        std::cout << "=========PLAYER==========\n";
-				std::cout << *player << std::endl;	
-				for (auto e : player->getEquipment()) {
-					std::cout << *e << std::endl;
-				} 
-
-        Stage s = Stub::createStage();
-        std::cout << "============STAGE=============\n";
-        std::cout << s << std::endl;
-			}
+	    Game* game = new Game(new Player({Stat(StatName::hp, 20)}));
+      game->start();
+      std::cout << "Game is starting !\n";
+      std::cout << "\n=========PLAYER=============\n";
+      std::cout << *(game->getPlayer()) << "\n";
+      std::cout << "=========EQUIPMENT=============\n";
+      for (auto e : game->getPlayer()->getEquipment()) {
+        std::cout << *e << "\n";
+      }
+      std::cout << "=========STAGE=============\n";
+      std::cout << game->getStage() << "\n";
 		} else {
 			std::cout << "Not implemented yet" << std::endl;
 			/*

@@ -1,5 +1,13 @@
 #include "Player.hpp"
 
+Player::Player()
+  :stats{}, inventory{}
+{}
+
+Player::Player(std::list<Stat> stats)
+  :stats{stats}, inventory{}
+{}
+
 Player::Player(std::vector<Equipment*> inventory, std::list<Stat> stats)
 				:stats{stats}, inventory{inventory}
 {}
@@ -21,7 +29,6 @@ std::vector<Equipment*> Player::getEquipment() {
 }
 
 std::ostream& operator<<(std::ostream& os, Player& p) {
-	os << "Stats : \n";
  	for (auto s : p.getStats()) {
 		os << s << "\n";
 	}	
