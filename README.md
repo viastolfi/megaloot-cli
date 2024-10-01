@@ -20,6 +20,12 @@ chmod +x build.sh
 ./build.sh
 ```
 
+If you want to see a quick showcase of the different features of the game just run 
+
+```bash
+./build.sh dev
+```
+
 # Author 
 
 This project is entirely made by me (ASTOLFI Vincent). I suggest you to check on my github profile if you want to see the other project I've done for my studies or the ones I do in my free time.
