@@ -49,19 +49,26 @@ char readArrowKey() {
 int main(int argc, char** argv) {
 		srand(static_cast<unsigned int>(time(0)));
 
-		Ennemy* e = Stub::createEnnemy();
-		std::cout << *e << std::endl;
-		std::cout << e->attack() << std::endl;	
+		if (argc > 1) {
+			if (std::string(argv[1]).compare("dev") == 0) {
+				Ennemy* e = Stub::createEnnemy();
+				std::cout << *e << std::endl;
+				std::cout << "Zombie attack : " << e->attack() << std::endl;	
 		
-		Player* player = Stub::createBase();
-    int selectedIndex = 0;
-		int actualMenu = 0;
-		std::vector<menuFunction> functions = { displayMenu, };
+				Player* player = Stub::createBase();	
+				std::cout << *player << std::endl;	
+			}
+		} else {
+			std::cout << "Not implemented yet" << std::endl;
+			/*
+    	int selectedIndex = 0;
+			int actualMenu = 0;
+			std::vector<menuFunction> functions = { displayMenu, };
 
-    setInputModeRaw(true);
-    char input;
+    	setInputModeRaw(true);
+    	char input;
 
-    while (true) {
+    	while (true) {
 				functions[actualMenu](player, selectedIndex);
         input = readArrowKey();
 
@@ -83,8 +90,10 @@ int main(int argc, char** argv) {
         } else {
 					std::cout << input << std::endl;
 				}
-    }
-
-    setInputModeRaw(false);
+    	}
+		
+    	setInputModeRaw(false);
+			*/
+		}
     return 0;
 }
