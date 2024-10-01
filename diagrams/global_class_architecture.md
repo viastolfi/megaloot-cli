@@ -26,6 +26,19 @@ classDiagram
 
     Player "*" --> Equipment : inventory
 
+    Game "1" --> Player : player 
+    Game "1" --> Stage : currentStage
+    class Game {
+        +start()
+        +goToNextStage()
+    }
+
+    Stage "*" --> Ennemy : frontLine
+    Stage "*" --> Ennemy : backLine
+ 
+    class Stage {
+        +list~Equipment*~ loot() 
+    }
 
     class Ennemy{
         <<abstract>>
