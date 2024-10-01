@@ -28,6 +28,20 @@ std::vector<Equipment*> Player::getEquipment() {
 	return inventory;
 }
 
+void Player::equip(int index) {
+  
+}
+
+int Player::attack() {
+  for (auto& s : getStats()) {
+    if (s.getStatName() == StatName::power) {
+      return s.getStatValue();
+    }
+  }
+
+  return 0;
+}
+
 std::ostream& operator<<(std::ostream& os, Player& p) {
  	for (auto s : p.getStats()) {
 		os << s << "\n";

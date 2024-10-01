@@ -18,6 +18,7 @@ public:
 	Player(std::vector<Equipment*> inventory, std::list<Stat> stats);
 	void addStat(Stat stat);
 	void addEquipment(Equipment* e);
+  int attack();
 	std::list<Stat> getStats();
 	std::vector<Equipment*> getEquipment();
 };

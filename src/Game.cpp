@@ -21,6 +21,12 @@ void Game::generateNewStage() {
   stage = Stage(frl, bal);
 }
 
+void Game::playerAttack(Ennemy* e) {
+  int damage = player->attack();
+  
+  std::cout << damage << std::endl; 
+}
+
 void Game::getLoot() {
   //Equipment* sword = new Sword ("medium sword", "It's a medium sword", {Stat(StatName::power, 10)}); 
   //Equipment* bow = new Bow("medium bow", "It's a medium bow", {Stat(StatName::power, 8)});
