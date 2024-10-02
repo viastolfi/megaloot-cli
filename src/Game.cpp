@@ -30,6 +30,18 @@ void Game::playerAttack(Ennemy* e) {
   }
 }
 
+void Game::ennemiesAttack() {
+  int damage = 0;
+  for (auto e: stage.getFrontLine()) {
+    damage+=e->attack();
+  }
+  for (auto e: stage.getBackLine()) {
+    damage+=e->attack();
+  }
+
+  player->getDamaged(damage);
+}
+
 void Game::getLoot() {
   //Equipment* sword = new Sword ("medium sword", "It's a medium sword", {Stat(StatName::power, 10)}); 
   //Equipment* bow = new Bow("medium bow", "It's a medium bow", {Stat(StatName::power, 8)});

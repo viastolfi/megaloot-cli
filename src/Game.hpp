@@ -17,6 +17,7 @@ class Game {
    void start();
    Player* getPlayer();
    Stage getStage();
+   void ennemiesAttack();
    void playerAttack(Ennemy* e);
    void generateNewStage();
    void getLoot();

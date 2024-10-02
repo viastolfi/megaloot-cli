@@ -19,6 +19,14 @@ void Player::addStat(Stat* stat) {
 void Player::addEquipment(Equipment* e) {
 	inventory.push_back(e);
 } 
+ 
+void Player::getDamaged(int damage) {
+  for (auto s : stats) {
+    if (s->getStatName() == StatName::hp) {
+      s->setStatValue(s->getStatValue() - damage);
+    } 
+  }
+}
 
 std::list<Stat*> Player::getStats() {
 	return stats;

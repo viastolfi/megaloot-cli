@@ -21,6 +21,7 @@ public:
 	void addStat(Stat* stat);
 	void addEquipment(Equipment* e);
   int attack();
+  void getDamaged(int damage);
   void equipWeapon(int index);
   void updateStat();
 	std::list<Stat*> getStats();
