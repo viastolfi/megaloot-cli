@@ -16,8 +16,9 @@ bin/exe: $(OBJ)
 
 # génération des .o à partir des .cpp et .hpp crrespondants : 
 obj/%.o: src/%.cpp 
+	@mkdir -p obj bin
 	$(CC) $(CFLAGS) -c $< -o $@
 
 #nettoyage : destruction des .o et de l'exécutable
 clean:
-	rm obj/*.o bin/exe
+	rm -rf obj bin
