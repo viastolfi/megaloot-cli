@@ -35,7 +35,7 @@ public:
 		inv.push_back(e6);
 		inv.push_back(e7);
 	
-		Player* p = new Player(inv, {Stat(StatName::hp, 50)});	
+		Player* p = new Player(inv, {new Stat(StatName::hp, 50)});	
 		return p;
 	}
 

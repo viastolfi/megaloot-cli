@@ -51,7 +51,7 @@ int main(int argc, char** argv) {
 		srand(static_cast<unsigned int>(time(0)));
 
 		if (argc > 1) {
-	    Game* game = new Game(new Player({Stat(StatName::hp, 20)}));
+	    Game* game = new Game(new Player({new Stat(StatName::hp, 20), new Stat(StatName::power, 0)}));
       game->start();
       std::cout << "Game is starting !\n";
       std::cout << "\n=========PLAYER=============\n";
@@ -62,6 +62,11 @@ int main(int argc, char** argv) {
       }
       std::cout << "=========STAGE=============\n";
       std::cout << game->getStage() << "\n";
+
+      std::cout << "=========EQUIP FIRST WEAPON=============\n";
+      game->getPlayer()->equipWeapon(0);
+      std::cout << "Weapon equiped, new Player stats\n";
+      std::cout << *(game->getPlayer()) << "\n";
 
       std::cout << "=========FIRST ROUND=============\n";
       std::cout << "Player attack : ";

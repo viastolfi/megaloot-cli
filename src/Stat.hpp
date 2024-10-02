@@ -13,6 +13,7 @@ public:
 	Stat(StatName name, int value);
 	StatName getStatName();
 	int getStatValue();
+  void setStatValue(int value);
 };
 
 std::ostream& operator<<(std::ostream& os, Stat s);

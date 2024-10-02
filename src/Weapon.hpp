@@ -13,6 +13,15 @@ public:
 					: Equipment(name, description) {}
 	Weapon(std::string name, std::string description, std::list<Stat> stats)
 					: Equipment(name, description, stats) {}
+  inline int getPower() {
+    for (auto s : getStats()) {
+      if (s.getStatName() == StatName::power) {
+        return s.getStatValue();
+      }
+    }
+
+    return 0;
+  }
 	virtual int attack() = 0;
 	virtual void print(std::ostream& os) = 0;
 	virtual ~Weapon() {}

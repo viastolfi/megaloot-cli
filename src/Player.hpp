@@ -7,19 +7,23 @@
 
 #include "Stat.hpp"
 #include "Equipment.hpp"
+#include "Weapon.hpp"
 
 class Player {
 private:
-	std::list<Stat> stats;
+	std::list<Stat*> stats;
 	std::vector<Equipment*> inventory;
+  Weapon* equipedWeapon;
 public:
   Player();
-  Player(std::list<Stat> stats);
-	Player(std::vector<Equipment*> inventory, std::list<Stat> stats);
-	void addStat(Stat stat);
+  Player(std::list<Stat*> stats);
+	Player(std::vector<Equipment*> inventory, std::list<Stat*> stats);
+	void addStat(Stat* stat);
 	void addEquipment(Equipment* e);
   int attack();
-	std::list<Stat> getStats();
+  void equipWeapon(int index);
+  void updateStat();
+	std::list<Stat*> getStats();
 	std::vector<Equipment*> getEquipment();
 };
 
