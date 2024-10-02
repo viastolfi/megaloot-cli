@@ -60,6 +60,10 @@ std::vector<Equipment*> Player::getEquipment() {
 }
 
 void Player::equipItem(int index) {
+  if (index >= inventory.size()) {
+    std::cout << "Index : " << index << " out of range\n";
+    return;
+  }
   if (Weapon* tmp = dynamic_cast<Weapon*>(inventory[index])) {
     equipWeapon(index);     
   }
@@ -70,8 +74,16 @@ void Player::equipItem(int index) {
 
 void Player::equipWeapon(int index) {
   // NOTE : Possible futur error. Use dynamic_cast for better safety
+  Weapon* tmp = nullptr;
+  if (equipedWeapon) {
+    tmp = equipedWeapon; 
+  }
   equipedWeapon = static_cast<Weapon*>(inventory[index]);
   inventory.erase(inventory.begin() + index);
+
+  if (tmp) {
+    inventory.push_back(tmp);
+  }
 
   updateStat();
 }

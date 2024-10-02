@@ -92,12 +92,12 @@ int main(int argc, char** argv) {
 
         while(game->getStageNumber() != 2 && game->getPlayer()->getHp() > 0) {
           game->getPlayer()->showInventory();
-          int i = -1;
-          while (i != 9) {
+          char c = ' ';
+          while (c != 'q') {
             std::cout << "Choose Equipment to equip\n";
-            std::cin >> i;
-            game->getPlayer()->equipItem(i);
-            std::cout << "You Equiped item number : " << i << "\n";
+            std::cin >> c;
+            game->getPlayer()->equipItem(c - '0');
+            std::cout << "You Equiped item number : " << c << "\n";
             game->getPlayer()->showInventory();
           }
         }
