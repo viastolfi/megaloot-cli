@@ -8,9 +8,10 @@
 
 class Zombie : public Ennemy {
 public:
-	Zombie(std::list<Stat> stats);
+	Zombie(std::list<Stat*> stats);
 	int attack() override;
 	void print(std::ostream& os) override;
+  int getDamaged(int damage) override;
 };
 
 #endif //ZOMBIE_HPP

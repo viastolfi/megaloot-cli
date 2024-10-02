@@ -1,21 +1,21 @@
 #ifndef STAGE_HPP
 #define STAGE_HPP
 
-#include <list>
+#include <vector>
 #include <iostream>
 
 #include "Ennemy.hpp"
 
 class Stage {
 private:
-  std::list<Ennemy*> backLine;
-  std::list<Ennemy*> frontLine;
+  std::vector<Ennemy*> backLine;
+  std::vector<Ennemy*> frontLine;
 public:
   Stage();
-  Stage(std::list<Ennemy*> frontLine, std::list<Ennemy*> backLine);
-  std::list<Ennemy*> getBackLine();
-  std::list<Ennemy*> getFrontLine();
-  std::list<Ennemy*> getEnnemies();
+  Stage(std::vector<Ennemy*> frontLine, std::vector<Ennemy*> backLine);
+  std::vector<Ennemy*> getBackLine();
+  std::vector<Ennemy*> getFrontLine();
+  void removeEnnemy(Ennemy* e);
 };
 
 std::ostream& operator<<(std::ostream& os, Stage s);

@@ -4,22 +4,29 @@ Stage::Stage()
   :backLine{}, frontLine{}
 {}
 
-Stage::Stage(std::list<Ennemy*> frontLine, std::list<Ennemy*> backLine)
+Stage::Stage(std::vector<Ennemy*> frontLine, std::vector<Ennemy*> backLine)
   :backLine{backLine}, frontLine{frontLine}
  {}
 
-std::list<Ennemy*> Stage::getBackLine() {
+std::vector<Ennemy*> Stage::getBackLine() {
   return backLine;
 }
 
-std::list<Ennemy*> Stage::getFrontLine() {
+std::vector<Ennemy*> Stage::getFrontLine() {
   return frontLine;
 }
 
-std::list<Ennemy*> Stage::getEnnemies() {
-  std::list<Ennemy*> cl = getFrontLine();
-  cl.merge(getBackLine());
-  return cl;
+void Stage::removeEnnemy(Ennemy* e) {
+  for (int i = 0; i < getFrontLine().size(); ++i) {
+    if (e == frontLine.at(i)) {
+      if (frontLine.size() == 1) {
+        frontLine.clear();
+      }
+      else {
+        frontLine.erase(getFrontLine().begin() + i); 
+      }
+    }
+  }
 }
 
 std::ostream& operator<<(std::ostream& os, Stage s) {

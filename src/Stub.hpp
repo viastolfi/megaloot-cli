@@ -40,13 +40,13 @@ public:
 	}
 
 	inline static Ennemy* createEnnemy() {
-		Ennemy* e = new Zombie({Stat(StatName::power, 10), Stat(StatName::hp, 50)});
+		Ennemy* e = new Zombie({new Stat(StatName::power, 10),new Stat(StatName::hp, 50)});
 		return e;
 	}
 
   inline static Stage createStage() {
-    std::list<Ennemy*> frontLine;
-    std::list<Ennemy*> backLine;
+    std::vector<Ennemy*> frontLine;
+    std::vector<Ennemy*> backLine;
     for (int i = 0; i < 3; i++){
       Ennemy* e = Stub::createEnnemy(); 
       Ennemy* e1 = Stub::createEnnemy(); 

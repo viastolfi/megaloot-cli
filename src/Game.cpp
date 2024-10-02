@@ -12,19 +12,22 @@ void Game::start() {
 }
 
 void Game::generateNewStage() {
-  Ennemy* fl = new Zombie({Stat(StatName::power, 10), Stat(StatName::hp, 7)});
-  Ennemy* bl = new Zombie({Stat(StatName::power, 6), Stat(StatName::hp, 10)});
+  Ennemy* fl = new Zombie({new Stat(StatName::power, 10),new Stat(StatName::hp, 7)});
+  Ennemy* bl = new Zombie({new Stat(StatName::power, 6),new Stat(StatName::hp, 10)});
 
-  std::list<Ennemy*> frl = {fl};
-  std::list<Ennemy*> bal = {bl};
+  std::vector<Ennemy*> frl = {fl};
+  std::vector<Ennemy*> bal = {bl};
 
   stage = Stage(frl, bal);
 }
 
 void Game::playerAttack(Ennemy* e) {
   int damage = player->attack();
-  
-  std::cout << damage << std::endl; 
+
+  int lifeAfterAttack = e->getDamaged(damage);
+  if (lifeAfterAttack < 0) {
+    stage.removeEnnemy(e);
+  }
 }
 
 void Game::getLoot() {

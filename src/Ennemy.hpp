@@ -8,15 +8,16 @@
 
 class Ennemy {
 private: 
-	std::list<Stat> stats;
+	std::list<Stat*> stats;
 public:
-	inline Ennemy(std::list<Stat> stats):stats{stats} {}
+  inline Ennemy(std::list<Stat*> stats):stats{stats} {}
 
 	virtual int attack() = 0;
 	virtual void print(std::ostream& os) = 0;
+  virtual int getDamaged(int damage) = 0;
 
-	inline std::list<Stat> getStats() { return stats; }
-	inline void addStat(Stat stat) { stats.push_back(stat); }
+	inline std::list<Stat*> getStats() { return stats; }
+	inline void addStat(Stat* stat) { stats.push_back(stat); }
 };
 
 inline std::ostream& operator<<(std::ostream& os, Ennemy& e) {
