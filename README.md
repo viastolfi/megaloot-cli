@@ -26,6 +26,12 @@ If you want to see a quick showcase of the different features of the game just r
 ./build.sh dev
 ```
 
+If you want to play the game interactively but without fancy menu and maybe unsafe part you can run
+
+```bash
+./build.sh loop
+```
+
 # Author 
 
 This project is entirely made by me (ASTOLFI Vincent). I suggest you to check on my github profile if you want to see the other project I've done for my studies or the ones I do in my free time.
