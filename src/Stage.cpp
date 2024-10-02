@@ -17,7 +17,7 @@ std::vector<Ennemy*> Stage::getFrontLine() {
 }
 
 int Stage::totalEnnemiesNumber() {
-  return frontLine.size() + backline.size();
+  return frontLine.size() + backLine.size();
 }
 
 void Stage::removeEnnemy(Ennemy* e) {
