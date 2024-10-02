@@ -1,11 +1,11 @@
 #include "Player.hpp"
 
 Player::Player()
-  :stats{}, inventory{}, equipedWeapon{}
+  :stats{}, inventory{}, equipedWeapon{nullptr}
 {}
 
 Player::Player(std::list<Stat*> stats)
-  :stats{stats}, inventory{}, equipedWeapon{}
+  :stats{stats}, inventory{}, equipedWeapon{nullptr}
 {}
 
 Player::Player(std::vector<Equipment*> inventory, std::list<Stat*> stats)
@@ -19,6 +19,29 @@ void Player::addStat(Stat* stat) {
 void Player::addEquipment(Equipment* e) {
 	inventory.push_back(e);
 } 
+
+void Player::showInventory() {
+  std::cout << "=========EQUIPED ITEMS=========\n";
+  if (equipedWeapon) {
+    std::cout << "E " << *equipedWeapon << "\n";
+  } else {
+    std::cout << "No items equiped\n";
+  }
+  std::cout << "=========SHOW INVENTORY=========\n";
+  for (auto e : inventory) {
+    std::cout << *e << "\n"; 
+  }
+}
+
+int Player::getHp() {
+  for (auto s : stats) {
+    if (s->getStatName() == StatName::hp) {
+      return s->getStatValue();
+    }
+  } 
+
+  return 0;
+}
  
 void Player::getDamaged(int damage) {
   for (auto s : stats) {
@@ -34,6 +57,15 @@ std::list<Stat*> Player::getStats() {
 
 std::vector<Equipment*> Player::getEquipment() {
 	return inventory;
+}
+
+void Player::equipItem(int index) {
+  if (Weapon* tmp = dynamic_cast<Weapon*>(inventory[index])) {
+    equipWeapon(index);     
+  }
+  else {
+    std::cout << "Not implemented yet\n";
+  }
 }
 
 void Player::equipWeapon(int index) {

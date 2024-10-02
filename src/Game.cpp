@@ -19,6 +19,11 @@ void Game::generateNewStage() {
   std::vector<Ennemy*> bal = {bl};
 
   stage = Stage(frl, bal);
+  actualStageNumber++;
+}
+
+int Game::getStageNumber() {
+  return actualStageNumber;
 }
 
 void Game::playerAttack(Ennemy* e) {

@@ -51,40 +51,58 @@ int main(int argc, char** argv) {
 		srand(static_cast<unsigned int>(time(0)));
 
 		if (argc > 1) {
-	    Game* game = new Game(new Player({new Stat(StatName::hp, 20), new Stat(StatName::power, 0)}));
-      game->start();
-      std::cout << "Game is starting !\n";
-      std::cout << "\n=========PLAYER=============\n";
-      std::cout << *(game->getPlayer()) << "\n";
-      std::cout << "=========EQUIPMENT=============\n";
-      for (auto e : game->getPlayer()->getEquipment()) {
-        std::cout << *e << "\n";
+      if (std::string(argv[1]) == "dev") {
+        Game* game = new Game(new Player({new Stat(StatName::hp, 20), new Stat(StatName::power, 0)}));
+        game->start();
+        std::cout << "Game is starting !\n";
+        std::cout << "\n=========PLAYER=============\n";
+        std::cout << *(game->getPlayer()) << "\n";
+        std::cout << "=========EQUIPMENT=============\n";
+        for (auto e : game->getPlayer()->getEquipment()) {
+          std::cout << *e << "\n";
+        }
+        std::cout << "=========STAGE=============\n";
+        std::cout << game->getStage() << "\n";
+
+        std::cout << "=========EQUIP FIRST WEAPON=============\n";
+        game->getPlayer()->equipWeapon(0);
+        std::cout << "Weapon equiped, new Player stats\n";
+        std::cout << *(game->getPlayer()) << "\n";
+
+        std::cout << "=========FIRST ROUND=============\n";
+        std::cout << "Player attack\n";
+        game->playerAttack(game->getStage().getFrontLine().at(0));
+        std::cout << "=========PLAYER ACTIONS FINISH=============\n";
+        std::cout << "Stage after round :\n";
+        std::cout << game->getStage();
+        std::cout << "Ennemies attack\n";
+        game->ennemiesAttack();
+        std::cout << "=========ROUND FINISH=============\n";
+        std::cout << "Player after round :\n";
+        std::cout << *(game->getPlayer()) << "\n";
+        std::cout << "=========SECOND ROUND=============\n";
+        std::cout << "Player attack\n";
+        game->playerAttack(game->getStage().getBackLine().at(0));
+        std::cout << "Stage after round :\n";
+        std::cout << game->getStage();
       }
-      std::cout << "=========STAGE=============\n";
-      std::cout << game->getStage() << "\n";
+      if (std::string(argv[1]) == "loop") {
+        Game* game = new Game(new Player({new Stat(StatName::hp, 20), new Stat(StatName::power, 0)}));
+        game->start();
 
-      std::cout << "=========EQUIP FIRST WEAPON=============\n";
-      game->getPlayer()->equipWeapon(0);
-      std::cout << "Weapon equiped, new Player stats\n";
-      std::cout << *(game->getPlayer()) << "\n";
-
-      std::cout << "=========FIRST ROUND=============\n";
-      std::cout << "Player attack\n";
-      game->playerAttack(game->getStage().getFrontLine().at(0));
-      std::cout << "=========PLAYER ACTIONS FINISH=============\n";
-      std::cout << "Stage after round :\n";
-      std::cout << game->getStage();
-      std::cout << "Ennemies attack\n";
-      game->ennemiesAttack();
-      std::cout << "=========ROUND FINISH=============\n";
-      std::cout << "Player after round :\n";
-      std::cout << *(game->getPlayer()) << "\n";
-      std::cout << "=========SECOND ROUND=============\n";
-      std::cout << "Player attack\n";
-      game->playerAttack(game->getStage().getBackLine().at(0));
-      std::cout << "Stage after round :\n";
-      std::cout << game->getStage();
-		} else {
+        while(game->getStageNumber() != 2 && game->getPlayer()->getHp() > 0) {
+          game->getPlayer()->showInventory();
+          int i = -1;
+          while (i != 9) {
+            std::cout << "Choose Equipment to equip\n";
+            std::cin >> i;
+            game->getPlayer()->equipItem(i);
+            std::cout << "You Equiped item number : " << i << "\n";
+            game->getPlayer()->showInventory();
+          }
+        }
+      }
+    } else {
 			std::cout << "Not implemented yet" << std::endl;
 			/*
     	int selectedIndex = 0;

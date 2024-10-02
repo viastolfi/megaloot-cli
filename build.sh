@@ -8,7 +8,9 @@ clear
 if [ ! -z $1 ];then
 	if [ $1 == "dev" ];then
 		./bin/exe dev
-	fi	
+  elif [ $1 == "loop" ];then
+    ./bin/exe loop
+  fi
 else 
 	./bin/exe
 fi

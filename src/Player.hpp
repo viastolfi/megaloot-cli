@@ -23,7 +23,10 @@ public:
   int attack();
   void getDamaged(int damage);
   void equipWeapon(int index);
+  void equipItem(int index);
   void updateStat();
+  int getHp();
+  void showInventory();
 	std::list<Stat*> getStats();
 	std::vector<Equipment*> getEquipment();
 };
