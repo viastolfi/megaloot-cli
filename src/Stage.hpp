@@ -15,6 +15,7 @@ public:
   Stage(std::vector<Ennemy*> frontLine, std::vector<Ennemy*> backLine);
   std::vector<Ennemy*> getBackLine();
   std::vector<Ennemy*> getFrontLine();
+  int totalEnnemiesNumber();
   void removeEnnemy(Ennemy* e);
 };
 

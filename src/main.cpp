@@ -79,6 +79,11 @@ int main(int argc, char** argv) {
       std::cout << "=========ROUND FINISH=============\n";
       std::cout << "Player after round :\n";
       std::cout << *(game->getPlayer()) << "\n";
+      std::cout << "=========SECOND ROUND=============\n";
+      std::cout << "Player attack\n";
+      game->playerAttack(game->getStage().getBackLine().at(0));
+      std::cout << "Stage after round :\n";
+      std::cout << game->getStage();
 		} else {
 			std::cout << "Not implemented yet" << std::endl;
 			/*

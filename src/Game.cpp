@@ -25,7 +25,7 @@ void Game::playerAttack(Ennemy* e) {
   int damage = player->attack();
 
   int lifeAfterAttack = e->getDamaged(damage);
-  if (lifeAfterAttack < 0) {
+  if (lifeAfterAttack <= 0) {
     stage.removeEnnemy(e);
   }
 }

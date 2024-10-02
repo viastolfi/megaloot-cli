@@ -16,6 +16,10 @@ std::vector<Ennemy*> Stage::getFrontLine() {
   return frontLine;
 }
 
+int Stage::totalEnnemiesNumber() {
+  return frontLine.size() + backline.size();
+}
+
 void Stage::removeEnnemy(Ennemy* e) {
   for (int i = 0; i < getFrontLine().size(); ++i) {
     if (e == frontLine.at(i)) {
@@ -24,6 +28,16 @@ void Stage::removeEnnemy(Ennemy* e) {
       }
       else {
         frontLine.erase(getFrontLine().begin() + i); 
+      }
+    }
+  }
+  for (int i = 0; i < backLine.size(); ++i) {
+    if (e == backLine.at(i)) {
+      if (backLine.size() == 1) {
+        backLine.clear();
+      }
+      else {
+        backLine.erase(backLine.begin() + i); 
       }
     }
   }
