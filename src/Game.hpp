@@ -6,6 +6,7 @@
 #include "Sword.hpp"
 #include "Bow.hpp"
 #include "Zombie.hpp"
+#include "EquipmentFactory.hpp"
 
 class Game {
  private:
@@ -14,7 +15,7 @@ class Game {
    Player* player;
  public:
    Game(Player* player);
-   void start();
+   void generateNewItems();
    Player* getPlayer();
    Stage getStage();
    void ennemiesAttack();

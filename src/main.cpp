@@ -53,7 +53,6 @@ int main(int argc, char** argv) {
 		if (argc > 1) {
       if (std::string(argv[1]) == "dev") {
         Game* game = new Game(new Player({new Stat(StatName::hp, 20), new Stat(StatName::power, 0)}));
-        game->start();
         std::cout << "Game is starting !\n";
         std::cout << "\n=========PLAYER=============\n";
         std::cout << *(game->getPlayer()) << "\n";
@@ -88,9 +87,8 @@ int main(int argc, char** argv) {
       }
       if (std::string(argv[1]) == "loop") {
         Game* game = new Game(new Player({new Stat(StatName::hp, 20), new Stat(StatName::power, 0)}));
-        game->start();
-
         while(game->getStageNumber() != 2 && game->getPlayer()->getHp() > 0) {
+          game->generateNewItems();
           game->getPlayer()->showInventory();
           char c = ' ';
           while (c != 'q') {

@@ -4,13 +4,6 @@ Game::Game(Player* player)
   :player(player)
 {}
 
-void Game::start() {
-  player->addEquipment(new Sword("basic sword", "It's a basic sword", {Stat(StatName::power, 10)}));
-  player->addEquipment(new Bow("basic bow", "It's a basic bow", {Stat(StatName::power, 8)}));
-
-  generateNewStage();
-}
-
 void Game::generateNewStage() {
   Ennemy* fl = new Zombie({new Stat(StatName::power, 10),new Stat(StatName::hp, 7)});
   Ennemy* bl = new Zombie({new Stat(StatName::power, 6),new Stat(StatName::hp, 10)});
@@ -20,6 +13,12 @@ void Game::generateNewStage() {
 
   stage = Stage(frl, bal);
   actualStageNumber++;
+}
+
+void Game::generateNewItems() {
+  for (int i = 0; i < 4; ++i) {
+    player->addEquipment(EquipmentFactory::generateRandomItem());
+  } 
 }
 
 int Game::getStageNumber() {
