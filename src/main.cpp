@@ -96,9 +96,32 @@ int main(int argc, char** argv) {
           while (c != 'q') {
             std::cout << "Choose Equipment to equip\n";
             std::cin >> c;
-            game->getPlayer()->equipItem(c - '0');
-            std::cout << "You Equiped item number : " << c << "\n";
-            game->getPlayer()->showInventory();
+            if (c >= '0' && c <= '9') {
+              game->getPlayer()->equipItem(c - '0');
+              std::cout << "You Equiped item number : " << c << "\n";
+              game->getPlayer()->showInventory();
+            }
+          }
+          std::cout << "EQUIPMENT DONE\nPLAYER STAT :\n";
+          std::cout << *(game->getPlayer());
+          std::cout << "STAGE CREATION\nSTART OF ROUND : " << game->getStageNumber() << "\n";
+          char lane = ' ';
+          char pos = ' ';
+          while (game->getStage().totalEnnemiesNumber() > 0 && game->getPlayer()->getHp() > 0) {
+            std::cout << "==============STAGE " << game->getStageNumber() << "==============\n";
+            std::cout << "==============PLAYER==============\n" << *(game->getPlayer());
+            std::cout << "==============ENNEMIES==============\n" << game->getStage() << std::endl;
+            std::cout << "Choose the ennemy you wanna attack\n";
+            std::cin >> lane;
+            std::cin >> pos;
+            if (lane == 'f') {
+              game->playerAttack(game->getStage().getFrontLine().at(pos - '0'));
+            } else if (lane == 'b') {
+              game->playerAttack(game->getStage().getBackLine().at(pos - '0'));
+            }
+            std::cout << "Player as played\nEnnemies turn\n";
+            game->ennemiesAttack();
+            std::cout << "Ennemies as attacked\n==============END OF TURN==============\n";
           }
         }
       }
