@@ -23,6 +23,7 @@ class Game {
    void playerAttack(Ennemy* e);
    void generateNewStage();
    void getLoot();
+   void setStageNumber(int s);
 };
 
 #endif //GAME_HPP

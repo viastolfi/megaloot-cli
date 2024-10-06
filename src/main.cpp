@@ -102,6 +102,7 @@ int main(int argc, char** argv) {
           }
           std::cout << "EQUIPMENT DONE\nPLAYER STAT :\n";
           std::cout << *(game->getPlayer());
+          game->generateNewStage();
           std::cout << "STAGE CREATION\nSTART OF ROUND : " << game->getStageNumber() << "\n";
           char lane = ' ';
           char pos = ' ';
@@ -125,6 +126,13 @@ int main(int argc, char** argv) {
       }
     } else {
 			std::cout << "Not implemented yet" << std::endl;
+
+      Game* g = new Game(new Player({new Stat(StatName::hp, 20), new Stat(StatName::power, 0)}));
+      for (int i = 0; i < 100; i++) {
+        std::cout << "=======================STAGE : " << i << "===================\n"; 
+        g->setStageNumber(i); 
+        g->generateNewItems();
+      }
 			/*
     	int selectedIndex = 0;
 			int actualMenu = 0;

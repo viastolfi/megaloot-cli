@@ -15,6 +15,9 @@ private:
 	Rarity rarity = RarityName::common;
 	std::list<Stat> stats = {};
 public:
+  Equipment(std::string name, std::string description, Rarity r)
+          :name{name}, description{description}, rarity{r}
+    {}
 	Equipment(std::string name, std::string description, std::list<Stat> stats)
 					:name{name}, description{description}, stats{stats}
 		{

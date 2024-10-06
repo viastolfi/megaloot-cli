@@ -10,6 +10,7 @@
 
 class Sword : public Weapon {
 public:
+  Sword(std::string name, std::string description, Rarity r);
 	Sword(std::string name, std::string description, std::list<Stat> stats);
 	Sword(std::string name, std::string description);
 	int attack() override;	

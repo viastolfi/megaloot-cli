@@ -1,5 +1,9 @@
 #include "Sword.hpp"
 
+Sword::Sword(std::string name, std::string description, Rarity r)
+  : Weapon(name, description, r)
+{}
+
 Sword::Sword(std::string name, std::string description, std::list<Stat> stats) 
 	: Weapon(name, description, stats)
 {}

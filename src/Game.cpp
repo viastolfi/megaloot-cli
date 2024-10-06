@@ -17,7 +17,7 @@ void Game::generateNewStage() {
 
 void Game::generateNewItems() {
   for (int i = 0; i < 4; ++i) {
-    player->addEquipment(EquipmentFactory::generateRandomItem());
+    player->addEquipment(EquipmentFactory::generateRandomItem(actualStageNumber));
   } 
 }
 
@@ -44,6 +44,10 @@ void Game::ennemiesAttack() {
   }
 
   player->getDamaged(damage);
+}
+
+void Game::setStageNumber(int s) {
+  actualStageNumber = s;
 }
 
 void Game::getLoot() {
