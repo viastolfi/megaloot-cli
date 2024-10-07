@@ -1,24 +1,36 @@
-#CC : le compilateur à utiliser
+# Compiler
 CC=g++
 
-#CFLAGS : les options de compilation
+# Compilation flags
 CFLAGS= -std=c++17 -Wall
 
-# les fichiers sources : tous les fichiers présents dans src/
-SRC=$(wildcard src/*.cpp)
+# Source directories
+SRC_DIR=src
+OBJ_DIR=obj
+BIN_DIR=bin
 
-# les fichiers objets (.o)
-OBJ=$(patsubst src/%.cpp,obj/%.o,$(SRC))
+# Find all .cpp files in src/ and its subdirectories
+SRC=$(shell find $(SRC_DIR) -name '*.cpp')
 
-#edition des liens : génération de l'exécutable à partir des .o 
-bin/exe: $(OBJ)
+# Generate corresponding .o files in obj/
+OBJ=$(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC))
+
+# The final executable
+EXEC=$(BIN_DIR)/exe
+
+# Default target
+all: $(EXEC)
+
+# Rule to link object files and create the final executable
+$(EXEC): $(OBJ)
+	@mkdir -p $(BIN_DIR)
 	$(CC) $(OBJ) -o $@
 
-# génération des .o à partir des .cpp et .hpp crrespondants : 
-obj/%.o: src/%.cpp 
-	@mkdir -p obj bin
+# Rule to compile .cpp files into .o files
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-#nettoyage : destruction des .o et de l'exécutable
+# Clean the build
 clean:
-	rm -rf obj bin
+	rm -rf $(OBJ_DIR) $(BIN_DIR)
