@@ -9,6 +9,9 @@
 
 class EquipmentFactory {
   public:
+    virtual Equipment* createItem(int stage) = 0;
+
+    /*
     inline static Equipment* generateRandomItem(int stage) {
         static std::random_device rd;
         static std::mt19937 gen(rd());
@@ -24,17 +27,11 @@ class EquipmentFactory {
           default: return nullptr;
         }
     }
+    */
 
-  inline static std::list<Stat> getRandomStats(int stage, std::vector<StatName> stats, Rarity r) {
-    std::list<Stat> s; 
-    for (auto sn : stats) {
-      s.push_back(Stat(sn, 10 + 10 * static_cast<int>(r.getName())));
-    }
+  virtual ~EquipmentFactory() {}
 
-    return s;
-  }
-
-  inline static std::vector<double> calculateRarityWeights(int stage) {
+  inline std::vector<double> calculateRarityWeights(int stage) {
     double commonWeight = 70.0;  
     double rareWeight = 20.0;   
     double epicWeight = 9.0;   
@@ -57,7 +54,7 @@ class EquipmentFactory {
     };
   }
 
-  inline static Rarity getRandomRarity(int stage) {
+  inline Rarity getRandomRarity(int stage) {
     auto weights = calculateRarityWeights(stage);
 
     double randomValue = static_cast<double>(rand()) / RAND_MAX;

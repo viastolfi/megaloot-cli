@@ -16,6 +16,11 @@ void Game::generateNewStage() {
 }
 
 void Game::generateNewItems() {
+  EquipmentFactory* f = new SwordFactory();
+  Equipment* e = f->createItem(actualStageNumber);
+  delete f;
+  std::cout << *e << std::endl;
+  /*
   for (int i = 0; i < 4; ++i) {
     Equipment* e = EquipmentFactory::generateRandomItem(actualStageNumber);
     std::cout << *e << std::endl;
@@ -26,6 +31,7 @@ void Game::generateNewItems() {
     player->addEquipment(e);
     //player->addEquipment(EquipmentFactory::generateRandomItem(actualStageNumber));
   } 
+  */
 }
 
 int Game::getStageNumber() {
