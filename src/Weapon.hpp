@@ -13,6 +13,8 @@ public:
     : Equipment(name, description, r) {}
 	Weapon(std::string name, std::string description)
 					: Equipment(name, description) {}
+	Weapon(std::string name, std::string description, Rarity r, std::list<Stat> stats)
+    : Equipment(name, description, r, stats) {}
 	Weapon(std::string name, std::string description, std::list<Stat> stats)
 					: Equipment(name, description, stats) {}
   inline int getPower() {

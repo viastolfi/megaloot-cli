@@ -18,6 +18,8 @@ public:
   Equipment(std::string name, std::string description, Rarity r)
           :name{name}, description{description}, rarity{r}
     {}
+	Equipment(std::string name, std::string description, Rarity r, std::list<Stat> stats)
+    :name{name}, description{description}, rarity{r}, stats{stats} {}
 	Equipment(std::string name, std::string description, std::list<Stat> stats)
 					:name{name}, description{description}, stats{stats}
 		{

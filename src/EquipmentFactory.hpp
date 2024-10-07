@@ -18,18 +18,21 @@ class EquipmentFactory {
 
         Rarity r = getRandomRarity(stage);
 
-        Equipment * s = new Sword("S", "s", r);
-        std::cout << *s << std::endl;
-
-        /*
         switch (randomItem) {
-          case 0: return new Sword("Sword", "Basic Sword", {Stat(StatName::power, 10)});
-          case 1: return new Bow("Bow", "Basic Bow", {Stat(StatName::power, 8)});
+          case 0: return new Sword("Sword", "Basic Sword", r, getRandomStats(stage, {StatName::power}, r));
+          case 1: return new Bow("Bow", "Basic Bow", r, getRandomStats(stage, {StatName::power, StatName::hp}, r));
           default: return nullptr;
         }
-        calculateRarityWeights(stage);
-        */
     }
+
+  inline static std::list<Stat> getRandomStats(int stage, std::vector<StatName> stats, Rarity r) {
+    std::list<Stat> s; 
+    for (auto sn : stats) {
+      s.push_back(Stat(sn, 10 + 10 * static_cast<int>(r.getName())));
+    }
+
+    return s;
+  }
 
   inline static std::vector<double> calculateRarityWeights(int stage) {
     double commonWeight = 70.0;  

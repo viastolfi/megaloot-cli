@@ -10,6 +10,8 @@
 
 class Bow : public Weapon {
 public:
+  Bow(std::string name, std::string description, Rarity r);
+  Bow(std::string name, std::string description, Rarity r, std::list<Stat> stats);
 	Bow(std::string name, std::string description, std::list<Stat> stats);
 	Bow(std::string name, std::string description);
 	int attack() override;	

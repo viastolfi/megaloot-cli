@@ -17,7 +17,14 @@ void Game::generateNewStage() {
 
 void Game::generateNewItems() {
   for (int i = 0; i < 4; ++i) {
-    player->addEquipment(EquipmentFactory::generateRandomItem(actualStageNumber));
+    Equipment* e = EquipmentFactory::generateRandomItem(actualStageNumber);
+    std::cout << *e << std::endl;
+    for (auto s : e->getStats()) {
+      std::cout << s << " ";
+    }
+    std::cout << "\n";
+    player->addEquipment(e);
+    //player->addEquipment(EquipmentFactory::generateRandomItem(actualStageNumber));
   } 
 }
 

@@ -4,6 +4,10 @@ Sword::Sword(std::string name, std::string description, Rarity r)
   : Weapon(name, description, r)
 {}
 
+Sword::Sword(std::string name, std::string description, Rarity r, std::list<Stat> stats) 
+  :Weapon(name, description, r, stats)
+{}
+
 Sword::Sword(std::string name, std::string description, std::list<Stat> stats) 
 	: Weapon(name, description, stats)
 {}
