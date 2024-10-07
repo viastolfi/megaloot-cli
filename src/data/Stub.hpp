@@ -4,13 +4,13 @@
 #include <vector>
 #include <list>
 
-#include "Player.hpp"
-#include "Equipment.hpp"
-#include "Sword.hpp"
-#include "Bow.hpp"
-#include "Ennemy.hpp"
-#include "Zombie.hpp"
-#include "Stage.hpp"
+#include "../Player.hpp"
+#include "../Equipment.hpp"
+#include "../Sword.hpp"
+#include "../Bow.hpp"
+#include "../Ennemy.hpp"
+#include "../Zombie.hpp"
+#include "../Stage.hpp"
 
 class Stub {
 public:

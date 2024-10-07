@@ -4,12 +4,12 @@
 #include <vector>
 
 #include "Stat.hpp"
-#include "StatName.hpp"
-#include "menu.hpp"
+#include "enums/StatName.hpp"
+#include "tools/menu.hpp"
 #include "Equipment.hpp"
 #include "Sword.hpp"
 #include "Bow.hpp"
-#include "Stub.hpp"
+#include "data/Stub.hpp"
 #include "Player.hpp"
 #include "Ennemy.hpp"
 #include "Game.hpp"

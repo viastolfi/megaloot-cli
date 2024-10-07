@@ -4,8 +4,8 @@
 #include <random>
 #include <iostream>
 
-#include "Rarity.hpp"
-#include "Sword.hpp"
+#include "../Rarity.hpp"
+#include "../Sword.hpp"
 
 class EquipmentFactory {
   public:

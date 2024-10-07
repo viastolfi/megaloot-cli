@@ -6,7 +6,7 @@
 #include "Sword.hpp"
 #include "Bow.hpp"
 #include "Zombie.hpp"
-#include "EquipmentFactory.hpp"
+#include "factories/EquipmentFactory.hpp"
 
 class Game {
  private:

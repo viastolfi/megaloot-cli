@@ -4,8 +4,8 @@
 #include <iostream>
 #include <string>
 
-#include "Equipment.hpp"
-#include "Player.hpp"
+#include "../Equipment.hpp"
+#include "../Player.hpp"
 
 void displayMenu(Player* p, int selectedIndex) {
     system("clear");

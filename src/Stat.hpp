@@ -4,7 +4,7 @@
 #include <iostream>
 #include <tuple>
 
-#include "StatName.hpp"
+#include "enums/StatName.hpp"
 
 class Stat {
 private:

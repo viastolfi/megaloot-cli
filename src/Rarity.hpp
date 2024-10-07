@@ -4,8 +4,8 @@
 #include <iostream>
 #include <string>
 
-#include "colorDefinition.hpp"
-#include "RarityName.hpp"
+#include "tools/colorDefinition.hpp"
+#include "enums/RarityName.hpp"
 
 class Rarity {
 private: 
