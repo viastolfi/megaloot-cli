@@ -6,7 +6,8 @@
 
 class SwordFactory : public WeaponFactory {
 public:
-  inline SwordFactory() :WeaponFactory() {}
+  SwordFactory();
+  std::list<Stat> getSpecificStat(int stage) override;
   Equipment* createItem(int stage) override;
 };
 

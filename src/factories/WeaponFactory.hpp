@@ -1,12 +1,15 @@
 #ifndef WEAPONFACTORY_HPP
 #define WEAPONFACTORY_HPP
 
+#include <list>
+
 #include "EquipmentFactory.hpp"
+#include "../Stat.hpp"
 
 class WeaponFactory : public EquipmentFactory {
 public: 
-  inline WeaponFactory() :EquipmentFactory() {}
-  virtual Equipment* createItem(int stage) = 0;
+  WeaponFactory();
+  std::list<Stat> getBaseStat(int stage) override;
   virtual ~WeaponFactory() {}
 };
 

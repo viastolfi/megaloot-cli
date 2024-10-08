@@ -3,9 +3,11 @@
 
 #include <random>
 #include <iostream>
+#include <list>
 
 #include "../Rarity.hpp"
 #include "../Sword.hpp"
+#include "../Stat.hpp"
 
 class EquipmentFactory {
   public:
@@ -29,6 +31,8 @@ class EquipmentFactory {
     }
     */
 
+  virtual std::list<Stat> getSpecificStat(int stage) = 0;
+  virtual std::list<Stat> getBaseStat(int stage) = 0;
   virtual ~EquipmentFactory() {}
 
   inline std::vector<double> calculateRarityWeights(int stage) {

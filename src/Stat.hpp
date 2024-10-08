@@ -16,6 +16,7 @@ public:
   void setStatValue(int value);
 };
 
+bool operator<(Stat s1, Stat s2);
 std::ostream& operator<<(std::ostream& os, Stat s);
 
 #endif //STAT-HPP

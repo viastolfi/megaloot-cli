@@ -20,6 +20,9 @@ void Game::generateNewItems() {
   Equipment* e = f->createItem(actualStageNumber);
   delete f;
   std::cout << *e << std::endl;
+  for (auto s : e->getStats()) {
+    std::cout << s << std::endl; 
+  }
   /*
   for (int i = 0; i < 4; ++i) {
     Equipment* e = EquipmentFactory::generateRandomItem(actualStageNumber);
