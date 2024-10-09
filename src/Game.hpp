@@ -11,13 +11,13 @@
 class Game {
  private:
    int actualStageNumber = 0;
-   Stage stage;
+   Stage* stage = nullptr;
    Player* player;
  public:
    Game(Player* player);
    void generateNewItems();
    Player* getPlayer();
-   Stage getStage();
+   Stage* getStage();
    void ennemiesAttack();
    int getStageNumber();
    void playerAttack(Ennemy* e);

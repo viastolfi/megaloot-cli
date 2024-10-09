@@ -18,6 +18,7 @@ public:
 
 	inline std::list<Stat*> getStats() { return stats; }
 	inline void addStat(Stat* stat) { stats.push_back(stat); }
+  virtual ~Ennemy() {};
 };
 
 inline std::ostream& operator<<(std::ostream& os, Ennemy& e) {

@@ -5,13 +5,17 @@ Game::Game(Player* player)
 {}
 
 void Game::generateNewStage() {
+  if (stage != nullptr) {
+    delete stage;
+  }
+
   Ennemy* fl = new Zombie({new Stat(StatName::power, 10),new Stat(StatName::hp, 7)});
   Ennemy* bl = new Zombie({new Stat(StatName::power, 6),new Stat(StatName::hp, 10)});
 
   std::vector<Ennemy*> frl = {fl};
   std::vector<Ennemy*> bal = {bl};
 
-  stage = Stage(frl, bal);
+  stage = new Stage(frl, bal);
   actualStageNumber++;
 }
 
@@ -46,16 +50,17 @@ void Game::playerAttack(Ennemy* e) {
 
   int lifeAfterAttack = e->getDamaged(damage);
   if (lifeAfterAttack <= 0) {
-    stage.removeEnnemy(e);
+    stage->removeEnnemy(e);
+    delete e;
   }
 }
 
 void Game::ennemiesAttack() {
   int damage = 0;
-  for (auto e: stage.getFrontLine()) {
+  for (auto e: stage->getFrontLine()) {
     damage+=e->attack();
   }
-  for (auto e: stage.getBackLine()) {
+  for (auto e: stage->getBackLine()) {
     damage+=e->attack();
   }
 
@@ -73,7 +78,7 @@ void Game::getLoot() {
   // TODO : implement
 }
 
-Stage Game::getStage() {
+Stage* Game::getStage() {
   return stage;
 }
 

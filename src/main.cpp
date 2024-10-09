@@ -70,7 +70,7 @@ int main(int argc, char** argv) {
 
         std::cout << "=========FIRST ROUND=============\n";
         std::cout << "Player attack\n";
-        game->playerAttack(game->getStage().getFrontLine().at(0));
+        game->playerAttack(game->getStage()->getFrontLine().at(0));
         std::cout << "=========PLAYER ACTIONS FINISH=============\n";
         std::cout << "Stage after round :\n";
         std::cout << game->getStage();
@@ -81,7 +81,7 @@ int main(int argc, char** argv) {
         std::cout << *(game->getPlayer()) << "\n";
         std::cout << "=========SECOND ROUND=============\n";
         std::cout << "Player attack\n";
-        game->playerAttack(game->getStage().getBackLine().at(0));
+        game->playerAttack(game->getStage()->getBackLine().at(0));
         std::cout << "Stage after round :\n";
         std::cout << game->getStage();
       }
@@ -106,7 +106,7 @@ int main(int argc, char** argv) {
           std::cout << "STAGE CREATION\nSTART OF ROUND : " << game->getStageNumber() << "\n";
           char lane = ' ';
           char pos = ' ';
-          while (game->getStage().totalEnnemiesNumber() > 0 && game->getPlayer()->getHp() > 0) {
+          while (game->getStage()->totalEnnemiesNumber() > 0 && game->getPlayer()->getHp() > 0) {
             std::cout << "==============STAGE " << game->getStageNumber() << "==============\n";
             std::cout << "==============PLAYER==============\n" << *(game->getPlayer());
             std::cout << "==============ENNEMIES==============\n" << game->getStage() << std::endl;
@@ -114,9 +114,9 @@ int main(int argc, char** argv) {
             std::cin >> lane;
             std::cin >> pos;
             if (lane == 'f') {
-              game->playerAttack(game->getStage().getFrontLine().at(pos - '0'));
+              game->playerAttack(game->getStage()->getFrontLine().at(pos - '0'));
             } else if (lane == 'b') {
-              game->playerAttack(game->getStage().getBackLine().at(pos - '0'));
+              game->playerAttack(game->getStage()->getBackLine().at(pos - '0'));
             }
             std::cout << "Player as played\nEnnemies turn\n";
             game->ennemiesAttack();
