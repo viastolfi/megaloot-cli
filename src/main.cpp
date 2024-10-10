@@ -133,6 +133,8 @@ int main(int argc, char** argv) {
         g->setStageNumber(i); 
         g->generateNewItems();
       }
+
+      delete g;
 			/*
     	int selectedIndex = 0;
 			int actualMenu = 0;

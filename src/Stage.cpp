@@ -43,6 +43,16 @@ void Stage::removeEnnemy(Ennemy* e) {
   }
 }
 
+Stage::~Stage() {
+  for (Ennemy* e : backLine) {
+    delete e;
+  }
+  for (Ennemy* e : frontLine) {
+    delete e;
+  }
+}
+
+
 std::ostream& operator<<(std::ostream& os, Stage s) {
   os << "Front Line : ";
   for (auto e : s.getFrontLine()) {

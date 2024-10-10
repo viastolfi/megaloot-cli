@@ -24,6 +24,7 @@ class Game {
    void generateNewStage();
    void getLoot();
    void setStageNumber(int s);
+   ~Game();
 };
 
 #endif //GAME_HPP

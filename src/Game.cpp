@@ -85,3 +85,12 @@ Stage* Game::getStage() {
 Player* Game::getPlayer() {
   return player;
 }
+
+Game::~Game() {
+  if (stage != nullptr) {
+    delete stage;
+  }
+  if (player != nullptr) {
+    delete player; 
+  }
+}

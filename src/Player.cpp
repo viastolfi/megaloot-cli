@@ -106,6 +106,22 @@ int Player::attack() {
   return 0;
 }
 
+Player::~Player() {
+  if(!stats.empty()) {
+    for (auto s : stats) {
+      delete s; 
+    }
+  }
+  if (!inventory.empty()) {
+    for (auto e : inventory) {
+      delete e;
+    } 
+  }
+  if (equipedWeapon != nullptr) {
+    delete equipedWeapon;
+  }
+}
+
 std::ostream& operator<<(std::ostream& os, Player& p) {
  	for (auto s : p.getStats()) {
 		os << *s << "\n";

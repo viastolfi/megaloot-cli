@@ -17,6 +17,7 @@ public:
   std::vector<Ennemy*> getFrontLine();
   int totalEnnemiesNumber();
   void removeEnnemy(Ennemy* e);
+  ~Stage();
 };
 
 std::ostream& operator<<(std::ostream& os, Stage s);

@@ -29,6 +29,7 @@ public:
   void showInventory();
 	std::list<Stat*> getStats();
 	std::vector<Equipment*> getEquipment();
+  ~Player();
 };
 
 std::ostream& operator<<(std::ostream& os, Player& p);
