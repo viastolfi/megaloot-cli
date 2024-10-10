@@ -32,7 +32,7 @@ class EquipmentFactory {
     */
 
   virtual std::list<Stat> getSpecificStat(int stage) = 0;
-  virtual std::list<Stat> getBaseStat(int stage) = 0;
+  virtual std::list<Stat> getBaseStat(int stage, Rarity r) = 0;
   virtual ~EquipmentFactory() {}
 
   inline std::vector<double> calculateRarityWeights(int stage) {

@@ -20,12 +20,27 @@ void Game::generateNewStage() {
 }
 
 void Game::generateNewItems() {
-  EquipmentFactory* f = new SwordFactory();
-  Equipment* e = f->createItem(actualStageNumber);
-  delete f;
-  std::cout << *e << std::endl;
-  for (auto s : e->getStats()) {
-    std::cout << s << std::endl; 
+  static std::random_device rd;
+  static std::mt19937 gen(rd());
+  std::uniform_int_distribution<> dis(0, 1);
+  EquipmentFactory* f = nullptr;
+
+  int randomItem = dis(gen); 
+
+  switch (randomItem) {
+    case 0: f = new SwordFactory(); break;
+    case 1: f = new BowFactory(); break;
+    default: f = nullptr; break;
+  }
+
+  if (f != nullptr) {
+    Equipment* e = f->createItem(actualStageNumber);
+    delete f;
+  
+    std::cout << *e << std::endl;
+    for (auto s : e->getStats()) {
+      std::cout << s << std::endl; 
+    }
   }
   /*
   for (int i = 0; i < 4; ++i) {

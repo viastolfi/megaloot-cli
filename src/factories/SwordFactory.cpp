@@ -6,7 +6,7 @@ SwordFactory::SwordFactory()
 
 Equipment* SwordFactory::createItem(int stage) {
   Rarity r = getRandomRarity(stage);
-  std::list<Stat> base = getBaseStat(stage);
+  std::list<Stat> base = getBaseStat(stage, r);
   std::list<Stat> specific = getSpecificStat(stage);
   
   if (!specific.empty()) {
@@ -18,6 +18,8 @@ Equipment* SwordFactory::createItem(int stage) {
 
 std::list<Stat> SwordFactory::getSpecificStat(int stage) {
   std::list<Stat> s;
+
+  // No specific stat for Sword
 
   return s;
 }
